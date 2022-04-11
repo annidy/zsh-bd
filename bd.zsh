@@ -22,6 +22,13 @@ bd () {
   local parent
   foreach parent (${parents})
   do
+    sub_dest=$dest"$1/"
+    if [[ -d $sub_dest ]]
+    then
+      cd $sub_dest
+      return 0
+    fi
+
     dest+="../"
     if [[ $1 == $parent ]]
     then
